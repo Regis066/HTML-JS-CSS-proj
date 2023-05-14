@@ -25,6 +25,9 @@ body{
     margin: auto;
     width: 100%;
 }
+section{
+    padding: 4rem 0 3rem;
+}
 header{
     position: fixed;
     top: 0;
@@ -48,4 +51,12 @@ header{
 #cart-icon{
     font-size: 1.8rem;
     cursor: pointer;
+}
+.section-title{
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+}
+.shop{
+    margin-top: 2rem;
 }

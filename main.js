@@ -50,8 +50,9 @@ updateTotal();
 //update total
 
 function updateTotal(){
-    var cartContent= document.querySelector('.cart-content')[0];
+    var cartContent= document.getElementsByClassName('cart-content')[0];
     var cartBoxes = cartContent.getElementsByClassName('cart-box');
+    var total = 0; 
 
     for (var i = 0; i< cartBoxes.length; i++){
         var cartBox= cartBoxes[i];
@@ -59,8 +60,8 @@ function updateTotal(){
         var quantityElmt = cartBox.getElementsByClassName('cart-quantity')[0]
         var price = parseFloat(priceElement.innerText.replace("$", ""))
         var quantity = quantityElmt.value;
-        total = total + (price * quantity);
+        total +=(price * quantity);
 
-        document.getElementsByClassName('total-price').innerText = "$" + total;
+        document.getElementsByClassName('total-price')[0].innerText = "$" + total;
     }
 }

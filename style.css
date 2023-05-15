@@ -192,3 +192,8 @@ background: var(--text-color);
 .add-cart:hover{
     background:hsl(249, 32%,17%) ;
 }
+.cont{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

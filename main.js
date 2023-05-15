@@ -39,12 +39,25 @@ function ready(){
 
         button.addEventListener('click' , addCartClicked)
     }
+    //BUY
+
+    document.getElementsByClassName('btn-buy')[0].addEventListener('click' , buyButtonClicked );
 
 }
+function buyButtonClicked(){
+    alert('Your Order is placed');
+    var cartContent = document.getElementsByClassName('cart-content')[0]
+    while(cartContent.hasChildNodes()){
+        cartContent.removeChild(cartContent.firstChild);
+    }
+    updateTotal();
+}
+
+
 
 function removeCartItem(event){
   var buttonClicked = event.target
-  buttonClicked.parentElement.parentElement.parentElement.remove();
+  buttonClicked.parentElement.remove();
   updateTotal();
 }
 
@@ -53,7 +66,7 @@ function addCartClicked(event){
     var shopProducts = button.parentElement
     var title = shopProducts.getElementsByClassName('product-title')[0].innerText
     var price = shopProducts.getElementsByClassName('price')[0].innerText
-    var productImg = shopProducts.getElementsByClassName('product-img')[0].innerText
+    var productImg = shopProducts.getElementsByClassName('product-img')[0].src;
     addProductToCart(title, price , productImg);
     updateTotal();
 
@@ -72,10 +85,10 @@ function addProductToCart(title, price , productImg){
        } 
     }
     var  cartBoxContent = `
-                <img src='${productImg}' alt="" class="cart-img">
+                <img src="${productImg}" alt="" class="cart-img">
                         <div class="detail-box">
-                        <div class="cart-product-title">FUME</div>
-                        <div class="cart-price">$30</div>
+                        <div class="cart-product-title">${title}</div>
+                        <div class="cart-price">${price}</div>
                         <input type="number" name="" class="cart-quantity" value="1">
                         </div>
                         <i class='bx bx-trash cart-remove'></i>`
@@ -109,9 +122,9 @@ function updateTotal(){
         var price = parseFloat(priceElement.innerText.replace("$", ""))
         var quantity = quantityElmt.value;
         total +=(price * quantity);
-
+    }
         total = Math.round(total * 100) / 100;
 
         document.getElementsByClassName('total-price')[0].innerText = "$" + total;
-    }
+    
 }
